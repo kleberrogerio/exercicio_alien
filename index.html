@@ -51,7 +51,7 @@
             this.add.image(larguraJogo/2, alturaJogo/2, 'background');
 
             alien = this.physics.add.sprite(larguraJogo/2, 0, 'player');
-            alien.setCollideworldBounds(true);
+            alien.setCollideWorldBounds(true);
 
             teclado = this.input.keyboard.createCursorKeys();
         }
@@ -74,7 +74,7 @@
 
             //Movimento para cima
             if(teclado.up.isDown){
-                alien.setVelocityX(-150);
+                alien.setVelocityY(-150);
             }
             //Movimento para baixo
             else{
