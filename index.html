@@ -23,7 +23,8 @@
             physics:{
                 default: 'arcade',
                 arcade: {
-                    gravity: { y: 300 }
+                    gravity: { y: 300 },
+                    debug: true
                 }
             },
 
@@ -38,6 +39,7 @@
         const game = new Phaser.Game(config);
 
         var alien;
+        var teclado;
 
         function preload() {
             this.load.image('background', 'assets/bg.png');
@@ -49,9 +51,35 @@
             this.add.image(larguraJogo/2, alturaJogo/2, 'background');
 
             alien = this.physics.add.sprite(larguraJogo/2, 0, 'player');
+            alien.setCollideworldBounds(true);
+
+            teclado = this.input.keyboard.createCursorKeys();
         }
 
         function update() {
+            //Movimento para a esquerda
+            if(teclado.left.isDown){
+                alien.setVelocityX(-150);
+            }
+
+            //movimento para a direita
+            else if (teclado.right.isDown){
+                alien.setVelocityX(150);
+            }
+
+            //Sem movimento horizontal
+            else{
+                alien.setVelocityX(0);
+            }
+
+            //Movimento para cima
+            if(teclado.up.isDown){
+                alien.setVelocityX(-150);
+            }
+            //Movimento para baixo
+            else{
+                
+            }
         }
     </script>
 </body>
