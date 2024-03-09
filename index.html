@@ -30,13 +30,18 @@
         // o que acontece aqui?
         const game = new Phaser.Game(config);
 
+        var alien;
+
         function preload() {
             this.load.image('background', 'assets/bg.png');
+            this.load.image('player', 'assets/alienigena.png');
         }
 
         function create() {
             // o que acontece aqui?
             this.add.image(larguraJogo/2, alturaJogo/2, 'background');
+
+            alien = this.phisics.add.sprite(largura/2, 0, 'player');
         }
 
         function update() {
