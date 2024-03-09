@@ -20,6 +20,13 @@
             width: larguraJogo,
             height: alturaJogo,
 
+            physics:{
+                default: 'arcade',
+                arcade: {
+                    gravity: { y: 300 }
+                }
+            },
+
             scene: {
                 preload: preload,
                 create: create,
@@ -41,7 +48,7 @@
             // o que acontece aqui?
             this.add.image(larguraJogo/2, alturaJogo/2, 'background');
 
-            alien = this.phisics.add.sprite(largura/2, 0, 'player');
+            alien = this.physics.add.sprite(larguraJogo/2, 0, 'player');
         }
 
         function update() {
