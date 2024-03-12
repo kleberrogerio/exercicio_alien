@@ -41,11 +41,15 @@
         var alien;
         var teclado;
         var fogo;
+        var plataforma;
+        var moeda;
 
         function preload() {
             this.load.image('background', 'assets/bg.png');
             this.load.image('player', 'assets/alienigena.png');
             this.load.image('turbo_nave', 'assets/turbo.png');
+            this.load.image('plataforma_tijolo', 'assets/tijolos.png');
+            this.load.image('moeda','assets/moeda.png');
         }
 
         function create() {
@@ -59,7 +63,18 @@
             alien = this.physics.add.sprite(larguraJogo/2, 0, 'player');
             alien.setCollideWorldBounds(true);
 
-            teclado = this.input.keyboard.createCursorKeys();            
+            teclado = this.input.keyboard.createCursorKeys();  
+            
+            //Adicionando a plataforma
+            plataforma = this.physics.add.staticImage(larguraJogo/2, alturaJogo/2,'plataforma_tijolo');
+            this.physics.add.collider(alien, plataforma);
+
+            //Adicionando a moeda
+            moeda = this.physics.add.sprite(larguraJogo/2, 0, 'moeda');
+            moeda.setCollideWorldBounds(true);
+            moeda.seBounce(0.7);
+            this.physics.add.collider(moeda, plataforma);
+
         }
 
         function update() {
